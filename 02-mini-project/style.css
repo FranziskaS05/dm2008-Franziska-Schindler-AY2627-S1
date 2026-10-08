@@ -1,0 +1,52 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+ 
+@font-face {
+  font-family:BingBoss;
+  src: url(BingBoss.otf);
+}
+
+button {
+  appearance: button;
+  background-color: #640218;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: BingBoss;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  margin: auto;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100;
+  transform: translateX(-50%);
+}
+
+
+
+button:hover {
+ background-color:#860220;
+}
+
+
+
+button:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
