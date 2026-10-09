@@ -27,8 +27,8 @@ let music;
 
 const SPAWN_RATE = 90;
 const PIPE_SPEED = 2;
-const PIPE_GAP = 120;
-const PIPE_W = 60;
+const PIPE_GAP = 140;
+const PIPE_W = 80;
 
 
 let gameState = "start";
@@ -45,8 +45,8 @@ async function setup() {
   textAlign(CENTER, CENTER);
   textSize(36);
   imageMode(CENTER);
-  bird = new Bird(120, height / 2);
-  pipes.push(new Pipe(width+40));
+  bird = new Bird(width/2, height / 2);
+  pipes.push(new Pipe(width+60));
   button = createButton("Retry");
   buttonStart=createButton("Start");
   button.position(width / 2, height/2+100);
@@ -84,7 +84,7 @@ function draw() {
     // Spawn a new pipe every SPAWN_RATE frames, then reset the counter
     spawnCounter++;
     if (spawnCounter >= SPAWN_RATE) {
-      pipes.push(new Pipe(width + 40));
+      pipes.push(new Pipe(width + 60));
       spawnCounter = 0;
     }
 
@@ -123,7 +123,7 @@ function draw() {
     text("GAME OVER", width / 2, height / 2);
     text("Your Score: "+score, width/2,height/2+70);
     pipes = [];
-    bird.pos=createVector(120, height / 2);
+    bird.pos=createVector(width/2, height / 2);
      music.stop();
     button.style("display","block");
   
@@ -217,9 +217,7 @@ class Pipe {
     return this.x + this.w < 0;
   }
 
-  // Checks if the bird overlaps with either pipe rectangle
-  // 1) Is the bird within the pipe's x range?
-  // 2) If yes, is it outside the gap — above the top or below the bottom?
+  
   hits(bird) {
     const withinX =
       bird.pos.x + bird.r > this.x && bird.pos.x - bird.r < this.x + this.w;
