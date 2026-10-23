@@ -1,4 +1,4 @@
-# DM2008 — Firstname Lastname
+# DM2008 — Franziska Schindler
 
 **Course:** DM2008: Programming for Interaction  
 **Academic Year:** AY2526 Semester 2  
@@ -10,7 +10,7 @@
 
 This is my personal mono-repo for DM2008. It contains all my work across the semester — weekly activities, projects, and the final capstone — committed and documented progressively throughout the course.
 
-<!-- Feel free to personalize this description here -->
+
 
 ---
 
@@ -32,4 +32,4 @@ This is my personal mono-repo for DM2008. It contains all my work across the sem
 
 ---
 
-_For teaching and learning purposes only. All work © <your name here>._
+_For teaching and learning purposes only. All work © <Franziska Schindler>._
