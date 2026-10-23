@@ -23,6 +23,6 @@ _Rename the main folder when you duplicate this for your own projects!_
 
 ## Your project notes
 
-Document your project here: what it does, what sensor you used, and how the data maps to the visual.
-
+We used a ultrasonic sensor to meassure the distance and with the map function, we can change the apperance and location of the green square on the screen.
+The size, position and roation speed change, when the there is an object infront of the sensor between a distance of 5-50cm.
 ---
