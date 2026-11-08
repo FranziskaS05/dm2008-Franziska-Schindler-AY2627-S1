@@ -3,11 +3,18 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "fill": "#312E81",
-        "stroke": "#312E81",
-        "stroke-opacity": 1
-      },
+     "properties": {
+  "fill": "#312E81",
+  "stroke": "#312E81",
+  "stroke-opacity": 1,
+  "name": "Austria",
+  "iso": "AT",
+  "population": 9160000,
+  "gdp_usd_billion": 535,
+  "gdp_per_capita_usd": 58000,
+  "languages": ["German"],
+  "fun_fact": "Vienna has been voted one of the world's most liveable cities many times."
+},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -146,7 +153,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+  "name": "Czech Republic",
+  "iso": "CZ",
+  "population": 10900000,
+  "gdp_usd_billion": 340,
+  "gdp_per_capita_usd": 31000,
+  "languages": ["Czech"],
+  "fun_fact": "Czechs drink more beer per person than any other nation."
+},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -369,7 +384,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+  "name": "Slovakia",
+  "iso": "SK",
+  "population": 5420000,
+  "gdp_usd_billion": 140,
+  "gdp_per_capita_usd": 25800,
+  "languages": ["Slovak"],
+  "fun_fact": "Slovakia has the most castles and chateaux per capita in the world."},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -552,7 +574,13 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {"name": "Hungary",
+  "iso": "HU",
+  "population": 9590000,
+  "gdp_usd_billion": 220,
+  "gdp_per_capita_usd": 22800,
+  "languages": ["Hungarian"],
+  "fun_fact": "The Rubik's Cube was invented by Hungarian Ernő Rubik in 1974."},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -699,7 +727,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+         "name": "Germany",
+  "iso": "DE",
+  "population": 83500000,
+  "gdp_usd_billion": 4660,
+  "gdp_per_capita_usd": 55800,
+  "languages": ["German"],
+  "fun_fact": "Parts of the German Autobahn have no general speed limit."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1170,7 +1206,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Switzerland",
+  "iso": "CH",
+  "population": 9050000,
+  "gdp_usd_billion": 940,
+  "gdp_per_capita_usd": 104000,
+  "languages": ["German", "French", "Italian", "Romansh"],
+  "fun_fact": "Switzerland has four national languages and no official capital by law, just a 'federal city', Bern."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1389,7 +1433,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "France",
+  "iso": "FR",
+  "population": 68400000,
+  "gdp_usd_billion": 3160,
+  "gdp_per_capita_usd": 46200,
+  "languages": ["French"],
+  "fun_fact": "France is the most visited country in the world."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1736,7 +1788,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Belgium",
+  "iso": "BE",
+  "population": 11800000,
+  "gdp_usd_billion": 630,
+  "gdp_per_capita_usd": 53000,
+  "languages": ["Dutch", "French", "German"],
+  "fun_fact": "Belgium produces over 220,000 tonnes of chocolate every year."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1879,7 +1939,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Netherlands",
+  "iso": "NL",
+  "population": 18000000,
+  "gdp_usd_billion": 1120,
+  "gdp_per_capita_usd": 62000,
+  "languages": ["Dutch"],
+  "fun_fact": "About a quarter of the country lies below sea level."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -2014,7 +2082,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Poland",
+  "iso": "PL",
+  "population": 36600000,
+  "gdp_usd_billion": 810,
+  "gdp_per_capita_usd": 22000,
+  "languages": ["Polish"],
+  "fun_fact": "Marie Curie was born in Warsaw, Poland."},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -2289,7 +2364,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Italy",
+  "iso": "IT",
+  "population": 59000000,
+  "gdp_usd_billion": 2370,
+  "gdp_per_capita_usd": 40000,
+  "languages": ["Italian"],
+  "fun_fact": "Italy has more UNESCO World Heritage Sites than any other country."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -2728,7 +2811,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Slovenia",
+  "iso": "SI",
+  "population": 2120000,
+  "gdp_usd_billion": 70,
+  "gdp_per_capita_usd": 33000,
+  "languages": ["Slovene"],
+  "fun_fact": "About 60% of Slovenia is covered by forest."
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -2855,7 +2946,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Croatia",
+  "iso": "HR",
+  "population": 3860000,
+  "gdp_usd_billion": 90,
+  "gdp_per_capita_usd": 23000,
+  "languages": ["Croatian"],
+  "fun_fact": "The necktie originates from Croatia."  
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
