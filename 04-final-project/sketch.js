@@ -1,28 +1,34 @@
 
-var geoData;
-
+let geoData;
+let slider;
 
 
 async function setup(){
     geoData = await loadJSON('data/geoData.geojson');
 createCanvas(windowWidth, windowHeight);
 background(220);
-drawShape();
+
+
+
+
+slider=createSlider(0,100,10);
+slider.position(20,20);
+slider.size(80);
 
 }
 
 function draw(){
-    
-
+   
+drawShape();
 }
 
 function drawShape(){
-    var polygons;
-var coordinates;
-var features= geoData.features;
-var geometry;
-
-fill('#81b214');
+let polygons;
+let coordinates;
+let features= geoData.features;
+let geometry;
+let g= slider.value(); 
+fill(g);
 for(let i=0; i<features.length; i++){
     geometry=features[i].geometry;
     polygons =geometry.coordinates;
