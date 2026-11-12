@@ -1,21 +1,39 @@
 
 let geoData;
-let slider;
+
 let button;
-let gbtn, hbtn, fbtn,cbtn,ibtn,czbtn,sbtn,nlbtn, plbtn;
+
 let flagImg;
 let flagShow = false;
 let languageShow = false;
+let features;
 let flaggen ={};
+let geometry;
+let properties;
+let iso;
+let language;
+let polygons;
+let coordinates;
+let currentCountry =0;
+let correct={};
+let incorrect={};
+let animation=[];
+
+
+let state = "play";
+let quizData=[];
+let score=0;
+let time=10;
+let timeLeft=10;
 
 async function setup(){
     geoData = await loadJSON('data/countries.geojson');
-
-    flaggen['AT'] = await loadImage('flags/at.png');
-    flaggen['CZ'] = await loadImage('flags/cz.png');
-    flaggen['SK'] = await loadImage('flags/sk.png');
-    flaggen['HU'] = await loadImage('flags/hu.png');
-    flaggen['DE'] = await loadImage('flags/de.png');
+    features = geoData.features;
+    flaggen['AT']=await loadImage('flags/at.png');
+    flaggen['CZ']=await loadImage('flags/cz.png');
+    flaggen['SK']=await loadImage('flags/sk.png');
+    flaggen['HU']=await loadImage('flags/hu.png');
+    flaggen['DE']=await loadImage('flags/de.png');
     flaggen['FR']=await loadImage('flags/fr.png');
     flaggen['CH']=await loadImage('flags/ch.png');
     flaggen['IT']=await loadImage('flags/it.png');
@@ -26,70 +44,61 @@ async function setup(){
     flaggen['PL']=await loadImage('flags/pl.png');
 
     createCanvas(windowWidth, windowHeight);
+for (let f of features){
+    correct[f.properties.iso]=0;
+    incorrect[f.properties.iso]=0;
+}
+startQuiz();
 
-slider=createSlider(0,100,10);
-slider.position(20,20);
-slider.size(80);
 
-gbtn=createButton('Germany');
-gbtn.position(20,60);
-gbtn.size(80);
-gbtn.mousePressed(displayFlag);
-
-hbtn=createButton('Hungary');
-hbtn.position(20,100);
-hbtn.size(80);
-hbtn.mousePressed(displayFlag);
-
-fbtn=createButton('France');
-fbtn.position(20,140);
-fbtn.size(80);
-fbtn.mousePressed(displayFlag);
-
-cbtn=createButton('Czechia');
-cbtn.position(20,180);
-cbtn.size(80);
-cbtn.mousePressed(displayFlag);
-
-ibtn=createButton('italian');
-ibtn.position(20,220);
-ibtn.size(80);
-ibtn.mousePressed(displayFlag);
-
-czbtn=createButton('Czechia');
-czbtn.position(20,260);
-czbtn.size(80);
-czbtn.mousePressed(displayFlag);
-
-sbtn=createButton('Slovakia');
-sbtn.position(20,300);
-sbtn.size(80);
-sbtn.mousePressed(displayFlag);
-
-nlbtn=createButton('Netherlands');
-nlbtn.position(20,340);
-nlbtn.size(80);
-nlbtn.mousePressed(displayFlag);
-
-plbtn=createButton('Poland');
-plbtn.position(20,380);
-plbtn.size(80);
-plbtn.mousePressed(displayFlag);
+}
+function startQuiz() {
+    quizData = [];
+    for (let f of features){
+        quizData.push(f.properties);
+    }
+    quizData=shuffle(quizData); // random doesnt work, cause its a array 
+    currentCountry=0;
+    score =0;
+    time=10;
+    timeLeft=time;
+    state = "play";
+}
+function nextQuestion() {
+    currentCountry++;
+    if (currentCountry >= quizData.length) {
+        state = "end";
+        return;
+    }
+    time=max(3,time-1);
+    timeLeft=time;
 }
 
 function draw(){
-background(220); 
+background(0); 
+
+for (let iso in incorrect){
+    incorrect[iso]*=0.95;
+    correct[iso]*=0.97;
+}
 drawShape();
+for (let i= animation.length-1; i>=0; i--){
+    animation[i].fallAnimation();
+    animation[i].display();
+    if(animation[i].isDead()) animation.splice(i,1);
+}
+if (state === "play") {
+  timeLeft -= deltaTime / 1000;
+
+  if (timeLeft <= 0) {
+    state = "end";
+  }
+}
+drawUI();
 }
 
 function drawShape(){
-let polygons;
-let coordinates;
-let features= geoData.features;
-let geometry;
-let properties;
-let iso;
-let language;
+
 //let g= slider.value(); 
 
 for(let i=0; i<features.length; i++){
@@ -102,9 +111,19 @@ for(let i=0; i<features.length; i++){
     coordinates=polygons[0];
 
     push();
-    fill(200,145,100);
+    
+let c = color(213, 122, 32);
+if (state === "play" && mouseInCountry(coordinates)) {
+  c = color(255, 180, 100);
+}
+c = lerpColor(c, color(0, 200, 0), correct[iso]);   
+c = lerpColor(c, color(255, 0, 0), incorrect[iso]);    
+fill(c);
+
+ beginShape();
+
+
    
-    beginShape();
     for(let j=0; j<coordinates.length; j++){
         let longitude= coordinates[j][0];
         let latitude= coordinates[j][1];
@@ -113,13 +132,16 @@ for(let i=0; i<features.length; i++){
         vertex(x,y);
     }
     endShape(CLOSE);
-    if (flagShow) {
-           shape(); 
-        }
-        
-        pop();
+   if(correct[iso]> 0.1 && flaggen[iso]){
+    drawFlag(coordinates, iso);
 }
-function shape(){
+
+        pop();
+    }
+}
+
+
+function drawFlag(coordinates, iso) {
     drawingContext.save();
             drawingContext.beginPath();
 
@@ -155,11 +177,101 @@ function shape(){
             image(flaggen[iso], minX, minY, landWidth, landHeight);
             drawingContext.restore();
 }
+function drawUI() {
+    if (state==="play"){
+
+
+    }
+
+    fill(255);
+    textSize(20);
+    textAlign(LEFT, TOP);
+      if (state === "play") {
+        text("Time Left: " + ceil(timeLeft), 20, 80);
+    text("Score: " + score, 20, 20);
+    text("Select: " + countryName(quizData[currentCountry]), 20, 50);
+  }
+    function countryName(country) {
+  return country.name;
 }
-function displayFlag(){
-flagShow = !flagShow;
+    if (state==="end") {
+        fill(0,200);
+        rect(0, 0, width, height);
+        fill(255, 0, 0);
+        textAlign(CENTER, CENTER);
+        textSize(50);
+        text("Game Over", width/2, height/2);
+        textSize(30);
+        text("Final Score: " + score, width/2, height/2 + 50);
+        textSize(20);
+        text("Click to restart", width/2, height/2 + 100);
+    }
 
 }
-function languageShow(){
-    languageShow = !languageShow;
+function countryName(country){
+    return country.properties.name;
+}
+function mouseInCountry(coordinates) {
+  drawingContext.beginPath();
+  for (let p of coordinates) {
+    let x = map(p[0], -15, 40, 0, width);
+    let y = map(p[1], 57, 36, 0, height);
+    drawingContext.lineTo(x, y);
+  }
+  return drawingContext.isPointInPath(mouseX * pixelDensity(), mouseY * pixelDensity());
+}
+function mousePressed() {
+    if (state === "end") {
+        startQuiz();
+        return;
+    }
+    for (let i = 0; i < features.length; i++) {
+    let iso = features[i].properties.iso;
+    let coordinates = features[i].geometry.coordinates[0];
+   
+    if (mouseInCountry(coordinates)) {
+        if (iso === quizData[currentCountry].iso) {
+            score++;
+            correct[iso] =1;
+            for (let j = 0; j < 10; j++) {
+                animation.push(new Particle(mouseX, mouseY));
+            }
+            nextQuestion();
+            
+        } else {
+            score--;
+            incorrect[iso] = 1;
+        }
+        return;
+    }
+    
+}
+}
+
+class Particle{
+    constructor(x,y){
+        this.x=x;
+        this.y=y;
+        this.vx=random(-5,5);
+        this.vy=random(-5,5);
+        this.size=random(5,10);
+        this.lifespan=255;
+        this.r=random(100,255);
+        this.g=random(100,255);
+        this.b=random(100,255);
+    }
+    fallAnimation(){
+        this.vy+=0.25;
+        this.x+=this.vx;
+        this.y+=this.vy;
+        this.lifespan-=6;
+    }
+    display(){
+        
+        fill(this.r,this.g,this.b,this.lifespan);
+        ellipse(this.x,this.y,this.size);
+    }
+    isDead(){
+        return this.lifespan<=0;
+    }
 }
