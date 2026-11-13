@@ -1,0 +1,71 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ border-radius: 10px;
+ border:7px solid #D57A20;
+}
+canvas{
+  display: block;
+}
+@font-face {
+  font-family:Organo;
+  src: url(Organo.ttf);
+}
+
+#info {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 280px;
+  padding: 20px;
+  background: #0F2A22;
+  color: #D57A20;
+  font-family: Organo;
+  border-radius: 25px;
+  border: 10px solid #D57A20;
+  pointer-events: none;
+}
+
+
+
+#info h2 {
+  margin: 4px 0 16px;
+  font-size: 28px;
+}
+
+#info p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 6px 0;
+  font-size: 14px;
+  border-top: 1px solid #444;
+}
+
+#info span {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+button{
+    font-family: Organo;
+    background: #0F2A22;
+    color: #D57A20;
+    border: 4px solid #D57A20
+;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+button:hover{
+    background: 682121;
+}
+
+p{
+    font-family: Organo;
+    color: #F3EAD7;
+    font-size: 16px;
+}
