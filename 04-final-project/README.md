@@ -1,41 +1,49 @@
-# Final Project — Title
+# Final Project — Country quiz
 
-<!-- Replace "Title" with the name of your project -->
+
 
 ---
 
 ### The Project
+My project is a quiz where you have to find the country on a map. There are to modes: Practice mode and play mode.
 
-<!-- What is your project and what does it do?
-     What experience does it create, and who or what does it respond to?
-     A short paragraph is ideal — make it something you'd be happy for anyone to read. -->
 
 ---
 
 ### Output
 
-![screenshot](readme-assets/screenshot-01.png)
+![screenshot](documentation/practice.png)
+![screenshot](documentation/start.png)
+![screenshot](documentation/end.png)
+![screenshot](documentation/play.png)
 
-<!-- Drop a screenshot or GIF of your project.
-     Got more to show? Add more images — let the work speak for itself.
-     Save everything to a readme-assets/ folder inside this project folder. -->
+video :
 
-[Watch Online](https://your-link-here)
+![screenshot](documentation/video.mp4)
 
-<!-- Replace the link above with a URL to a screen recording or video of your final project.
-     ⚠️ Make sure the file or page is set to public before submitting. -->
+
 
 ---
 
 ### ✍️ Reflection
 
-<!-- 200–300 words on your process and outcome. Write freely — this is your story to tell.
-     Some prompts to get you started:
-     — What did you set out to create, and how did the final result compare to your original vision?
-     — How is your project structured — what inputs does it respond to and how did you approach the code?
-     — What were your key visual and/or sonic design decisions, and why?
-     — What was your biggest challenge, and how did you work through it?
-     — What would you change, add, or explore further given more time? -->
+Reflection Prompt
+Concept
+My project is an interactive map, which is also a quiz. I initially wanted to do an interactive map of Europe where you can see different attributes like population, relief etc. but this turned out to be harder than expected so I tuned my map into a country quiz with also a practice mode, where you can look at the countries and see specific information about each country.
+Interaction Logic
+The system uses mainly the mouse, to click buttons, start the game, change mode and restart. 
+Technical Structure
+I have a data folder where my json file with the map data is, I used the coordinates and transformed them into pixels so the map of Europe can be displayed. In general, my project has states to switch between: start, play, practice, end. The majority of the logic is in extra functions, to for example draw the country shape or display the UI, so that draw is not overloaded and unstructured. I also added a class, it’s for the particles, so I can easily create them.
+Behavior Over time
+I implemented a timer, at the beginning you have a total of 15 seconds to find the right country, and it decreases for each country one second, so for the 2nd country to find you  only have 14s. 
+Aesthetic Decisions
+I implemented most of the styling in the style.css file, where I designed the html objects like buttons and my info panel. The rest like text I designed in the sketch itself. I added my own font to give it more character.
+Iteration & Challenges
+I struggled the most with the map itself because I have never worked with json input before, but I really wanted to. I mean after doing some research and finding instructions it was easier, but it took me a long time to really understand how to do it. I also changed my project because of the map, because if you want to display more information in each country it is a lot of work and more data you need to have, which I didn’t. Overall, I think it was a good idea, I now mixed new with the already learned programming skills.
+
+
+
+
 
 ---
 
