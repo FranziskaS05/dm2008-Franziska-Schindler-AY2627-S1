@@ -19,7 +19,7 @@ My project is a quiz where you have to find the country on a map. There are to m
 
 video :
 
-![screenshot](documentation/video.mp4)
+![video](documentation/video.mp4)
 
 
 
